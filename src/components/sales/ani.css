@@ -1,0 +1,135 @@
+@-webkit-keyframes toproof {
+    from {
+        visibility: visible;
+        -webkit-transform: translate(0px, -40px);
+        transform: translate(0px, -40px);
+    }
+    to {
+        visibility: visible;
+        -webkit-transform: translate(0px, 0px);
+        transform: translate(0px, 0px);
+    }
+}
+
+@keyframes toproof {
+    from {
+        visibility: visible;
+        -webkit-transform: translate(0px, -40px);
+        transform: translate(0px, -40px);
+    }
+    to {
+        visibility: visible;
+        -webkit-transform: translate(0px, 0px);
+        transform: translate(0px, 0px);
+    }
+}
+
+@-webkit-keyframes uppershop {
+    from {
+        visibility: visible;
+        -webkit-transform: translate(0px, -150px);
+        transform: translate(0px, -150px);
+    }
+    to {
+        visibility: visible;
+        -webkit-transform: translate(0px, 0px);
+        transform: translate(0px, 0px);
+    }
+}
+
+@keyframes uppershop {
+    from {
+        visibility: visible;
+        -webkit-transform: translate(0px, -150px);
+        transform: translate(0px, -150px);
+    }
+    to {
+        visibility: visible;
+        -webkit-transform: translate(0px, 0px);
+        transform: translate(0px, 0px);
+    }
+}
+
+@-webkit-keyframes bodyshop {
+    from {
+        visibility: visible;
+        -webkit-transform: translate(-400px, 0px);
+        transform: translate(-400px, 0px);
+    }
+    to {
+        visibility: visible;
+        -webkit-transform: translate(0px, 0px);
+        transform: translate(0px, 0px);
+    }
+}
+
+@keyframes bodyshop {
+    from {
+        visibility: visible;
+        -webkit-transform: translate(-400px, 0px);
+        transform: translate(-400px, 0px);
+    }
+    to {
+        visibility: visible;
+        -webkit-transform: translate(0px, 0px);
+        transform: translate(0px, 0px);
+    }
+}
+
+@-webkit-keyframes mat {
+    from {
+        visibility: visible;
+        -webkit-transform: translate(0px, 50px);
+        transform: translate(0px, 50px);
+    }
+    to {
+        visibility: visible;
+        -webkit-transform: translate(0px, 0px);
+        transform: translate(0px, 0px);
+    }
+}
+
+@keyframes mat {
+    from {
+        visibility: visible;
+        -webkit-transform: translate(0px, 50px);
+        transform: translate(0px, 50px);
+    }
+    to {
+        visibility: visible;
+        -webkit-transform: translate(0px, 0px);
+        transform: translate(0px, 0px);
+    }
+}
+
+#toproof {
+    visibility: hidden;
+    -webkit-animation: 3s ease-in-out 0s toproof;
+    animation: 3s ease-in-out 0s toproof;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+#uppershop {
+    visibility: hidden;
+    -webkit-animation: 3s ease-in-out 3s uppershop;
+    animation: 3s ease-in-out 3s uppershop;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+#bodyshop {
+    visibility: hidden;
+    -webkit-animation: 3s ease-in-out 3s bodyshop;
+    animation: 3s ease-in-out 3s bodyshop;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+#mat {
+    visibility: hidden;
+    -webkit-animation: 3s ease-in-out 5s mat;
+    animation: 3s ease-in-out 5s mat;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
