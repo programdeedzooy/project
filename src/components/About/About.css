@@ -1,0 +1,35 @@
+.title {
+    color: aqua;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 25px;
+}
+
+.typed {
+    position: relative;
+    top: 90px;
+    left: -50px;
+    color: bisque;
+    font-size: 20px;
+    line-height: 1.8;
+    word-spacing: 10px;
+    text-shadow: 2px 0.5px #B809D5;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 40% 40%;
+    column-gap: 100px;
+    row-gap: 100px;
+}
+
+.grid-con {
+    background-color: #B809D5;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    /* font-size: 30px; */
+    text-align: center;
+    position: relative;
+    left: -60px;
+}

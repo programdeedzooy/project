@@ -1,0 +1,113 @@
+.form-style {
+    display: flex;
+    position: relative;
+    left: 10px;
+    /* top: 20px; */
+    width: 400px;
+    height: 450px;
+    /* color: aqua; */
+    background-color: rgba(255, 255, 255, 0.137);
+    border-radius: 2%;
+    padding: 10px;
+    margin: 20px;
+}
+
+.divvv {
+    margin-top: 10px;
+}
+
+.cen {
+    position: relative;
+    left: 50%;
+    transform: translateX(-20%);
+    font-size: 25px;
+    margin-bottom: 50px;
+    color: aqua;
+}
+
+input[type=text],
+textarea {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.575);
+    /* color: royalblue; */
+}
+
+label {
+    color: aquamarine;
+    margin-left: 10px;
+}
+
+button {
+    width: 90px;
+    height: 40px;
+    position: relative;
+    left: 230px;
+    margin-top: 40px;
+}
+
+.in {
+    display: flex;
+    flex-direction: row;
+}
+
+.icons {
+    display: grid;
+    grid-template-columns: auto auto;
+    /* background-color: #2196F3; */
+    padding: 10px;
+    grid-column-gap: 100px;
+    grid-row-gap: 50px;
+}
+
+.icon-items {
+    background-color: #B809D5;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.info {
+    width: 400px;
+    height: 100px;
+    background-color: rgba(255, 255, 255, 0.137);
+    border-radius: 40px;
+    position: relative;
+    top: 350px;
+    padding: 20px;
+}
+
+.cent {
+    position: relative;
+    left: 50%;
+    transform: translateX(-20%);
+    color: aqua;
+    font-size: 25px
+}
+
+.content {
+    position: relative;
+    left: 50%;
+    transform: translateX(-30%);
+    margin-top: 10px;
+    color: blue;
+    font-size: 20px;
+}
+
+.textarea {
+    position: relative;
+    left: 68px;
+}
+
+.id {
+    position: relative;
+    left: 7px;
+}
+
+.name {
+    position: relative;
+    left: 17px;
+}

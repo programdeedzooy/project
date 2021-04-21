@@ -1,0 +1,49 @@
+.head {
+    color: blueviolet;
+    font-size: 40px;
+    position: relative;
+    left: 30px;
+    top: 20px;
+}
+
+.name {
+    color: blue;
+    font-size: 30px;
+    position: relative;
+    /* left: 30px; */
+    top: 30px;
+}
+
+.arrow {
+    position: relative;
+    top: 4px;
+}
+
+.KG {
+    position: relative;
+    left: 100px;
+    top: 50px;
+    font-size: 30px;
+    color: rgb(255, 0, 0);
+}
+
+.timing {
+    color: blueviolet;
+    position: relative;
+    left: 10px;
+    top: 20px;
+    font-size: 25px;
+}
+
+.trans {
+    color: blueviolet;
+    position: relative;
+    top: 70px;
+    left: 15px;
+    font-size: 20px;
+}
+
+.bike {
+    width: 10px;
+    height: 10px;
+}

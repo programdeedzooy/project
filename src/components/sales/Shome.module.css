@@ -1,6 +1,6 @@
 .sales {
     font-size: 45px;
-    margin-top: 100px;
+    margin-top: 80px;
     margin-bottom: 10px;
     font-family: "Courier New", Courier, monospace;
     content: "";
@@ -48,5 +48,5 @@
 }
 
 svg {
-    margin-top: 100px;
+    margin-top: 30px;
 }

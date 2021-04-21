@@ -1,0 +1,22 @@
+input[type=text],
+textarea {
+    width: 250px;
+}
+
+label {
+    color: black
+}
+
+form {
+    color: black;
+}
+
+.forms {
+    padding-top: 10px;
+    margin-left: 10px;
+}
+
+.forms1 {
+    padding-top: 10px;
+    /* margin-left: 10px; */
+}
