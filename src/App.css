@@ -402,12 +402,15 @@ nav ul a:hover {
     border-radius: 20px;
 }
 
-.login a {
-    position: absolute;
-    left: 20px;
-    font-size: 20px;
-    font-weight: 400px;
-    top: 10px;
+.login button {
+    border-radius: 20px;
+    position: relative;
+    left: 0px;
+    top: -40px;
+    height: 40px;
+    width: 150px;
+    background-color: #B809D5;
+    border-color: #B809D5;
 }
 
 .cha {
@@ -419,12 +422,34 @@ nav ul a:hover {
     background-color: #B809D5;
     border-color: #B809D5;
     border-radius: 40px;
-    -webkit-animation: 5s ease-in-out 0s cha;
-    animation: 5s ease-in-out 0s cha;
+    /* -webkit-animation: 5s ease-in-out 0s cha; */
+    /* animation: 5s ease-in-out 0s cha ; */
 }
 
-.cha a {
-    font-size: 0px;
+.cha button {
+    /* background-color: aqua; */
+    /* font-size: 0px; */
+    display: none;
+}
+
+.logs {
+    width: 600px;
+    height: 500px;
+    /* background-color: rgba(0, 0, 0, 0.25); */
+    background-color: #29e752;
+    border: 20px;
+    border-color: rgba(0, 0, 0, 0.55);
+    border-radius: 20px;
+    position: relative;
+    top: -185px;
+    left: -300px;
+    z-index: 1000;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.logs::-webkit-scrollbar {
+    display: none;
 }
 
 

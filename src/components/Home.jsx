@@ -19,69 +19,76 @@ import Salesitems from "./sales/Salesitems/Salesitems";
 import Workitem from "./works/workitem/Workitem";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Workintro from "./works/Workintro/Workintro";
+import { Provider } from "./Context";
+import Login from "./Extra/login";
+
 function App() {
   return (
-    <Router>
-      <div>
-        <div className="center">
-          <div className="container">
-            <Navbar />
-            <Switch>
-              <Route exact path="/">
-                <Body />
-                <Stylebox />
-                <Leftarrow />
-                <Rightarrow />
-                <Bubble />
-              </Route>
+    <Provider>
+      <Router>
+        <div>
+          <div className="center">
+            <div className="container">
+              <Navbar />
+              <Switch>
+                <Route exact path="/">
+                  <Body />
+                  <Stylebox />
+                  <Leftarrow />
+                  <Rightarrow />
+                  <Bubble />
+                </Route>
 
-              <Route exact path="/sales">
-                <Shome />
-                <Bubble />
-              </Route>
+                <Route exact path="/sales">
+                  <Shome />
+                  <Bubble />
+                </Route>
 
-              <Route exact path="/purchase">
-                <Purchase />
-                <Bubble />
-              </Route>
+                <Route exact path="/purchase">
+                  <Purchase />
+                  <Bubble />
+                </Route>
 
-              <Route exact path="/works">
-                <Works />
-                <Bubble />
-              </Route>
+                <Route exact path="/works">
+                  <Works />
+                  <Bubble />
+                </Route>
 
-              <Route exact path="/contact">
-                <Contact />
-                <Bubble />
-              </Route>
+                <Route exact path="/contact">
+                  <Contact />
+                  <Bubble />
+                </Route>
 
-              <Route exact path="/about">
-                <About />
-                <Bubble />
-              </Route>
+                <Route exact path="/about">
+                  <About />
+                  <Bubble />
+                </Route>
 
-              <Route exact path="/Salesintro">
-                <Salesintro />
-              </Route>
+                <Route exact path="/Salesintro">
+                  <Salesintro />
+                </Route>
 
-              <Route exact path="/Purchaseintro">
-                <Purchaseintro />
-              </Route>
+                <Route exact path="/Purchaseintro">
+                  <Purchaseintro />
+                </Route>
 
-              <Route exact path="/Purchaseintro/:id" component={Postitems} />
+                <Route exact path="/Purchaseintro/:id" component={Postitems} />
 
-              <Route exact path="/Salesintro/:id" component={Salesitems} />
+                <Route exact path="/Salesintro/:id" component={Salesitems} />
 
-              <Route exact path="/Workintro">
-                <Workintro />
-              </Route>
+                <Route exact path="/Workintro">
+                  <Workintro />
+                </Route>
 
-              <Route exact path="/Workintro/:id" component={Workitem} />
-            </Switch>
+                <Route exact path="/Workintro/:id" component={Workitem} />
+
+                <Route exact path="/123" component={Login} />
+              </Switch>
+            </div>
           </div>
         </div>
-      </div>
-    </Router>
+      </Router>
+    </Provider>
   );
 }
 

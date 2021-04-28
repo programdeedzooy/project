@@ -1,0 +1,70 @@
+.title {
+    position: relative;
+    left: 40%;
+    font-size: 45px;
+    color: rgb(224, 42, 215);
+    font-style: unset;
+}
+
+.label {
+    /* color: aqua; */
+    color: black;
+    font-size: 25px;
+    position: relative;
+    left: -6px;
+}
+
+.tit {
+    position: relative;
+    left: 20%;
+}
+
+.div {
+    margin: 10px;
+}
+
+.input {
+    width: 200px;
+    height: 25px;
+    background-color: black;
+    color: beige;
+}
+
+.intext {
+    background-color: black;
+    color: beige;
+}
+
+.button {
+    position: relative;
+    top: -20px;
+    background-color: rgb(224, 42, 215);
+    border-color: rgb(224, 42, 215);
+    border-radius: 20px;
+}
+
+.loginbut {
+    position: relative;
+    top: -630px;
+    left: 500px;
+    border-radius: 20px;
+    border-color: rgb(224, 42, 215);
+    background-color: rgb(224, 42, 215);
+}
+
+.loginbutt {
+    position: relative;
+    top: -310px;
+    left: 500px;
+    border-radius: 20px;
+    border-color: rgb(224, 42, 215);
+    background-color: rgb(224, 42, 215);
+}
+
+.close {
+    background-color: aqua;
+    border-radius: 10px;
+    position: absolute;
+    left: 20px;
+    top: 0px;
+}

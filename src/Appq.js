@@ -10,10 +10,10 @@ $(document).ready(function() {
     });
 
 
-    $(".tog").click(function() {
-        $(".tog").removeClass("login")
-        $(this).addClass("cha")
-    })
+    // $(".tog").click(function() {
+    //     $(".tog").removeClass("login")
+    //     $(this).addClass("cha")
+    // })
 
 
 })

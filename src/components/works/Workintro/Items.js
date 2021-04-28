@@ -13,7 +13,7 @@ import {
 } from "react-icons/fa";
 
 function Items(props) {
-  const { id } = props.arr;
+  const { id, from, to, kg } = props.arr;
   return (
     <>
       <Tilt className="Title">
@@ -34,13 +34,13 @@ function Items(props) {
                 <img className={Sales.img} src={carrot} alt="" />
               </div>
               <div className={Work.name}>
-                covi{" "}
+                {from}{" "}
                 <span className={Work.arrow}>
                   <FaLongArrowAltRight />
                 </span>{" "}
-                palani
+                {to}
               </div>
-              <div className={Work.rup}>2 kG</div>
+              <div className={Work.rup}>{kg} kG</div>
             </div>
           </div>
         </Link>
