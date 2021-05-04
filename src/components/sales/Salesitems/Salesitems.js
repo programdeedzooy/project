@@ -24,19 +24,18 @@ function Salesitems() {
     onSubmit,
   });
 
-  const photos = async (e) => {
-    formik.values.photos = e.target.value;
-  };
-
   return (
     <div>
       {" "}
       {/* <Searchbar/> */}{" "}
       <div className={Sales.apps}>
-        <div className={Post.back}> </div>{" "}
+        <div className={Post.back}>
+          <div className={Post.title}> Sales </div>{" "}
+        </div>{" "}
         <form onSubmit={formik.handleSubmit}>
           <div className={Post.itemDetials}>
-            {/* <form onSubmit={formik.handleSubmit}> */}
+            {" "}
+            {/* <form onSubmit={formik.handleSubmit}> */}{" "}
             <div className={Post.headbox}>
               <div className={Sal.forms}>
                 <label htmlFor="id"> your id </label>{" "}
@@ -45,7 +44,7 @@ function Salesitems() {
                   name="id"
                   onChange={formik.handleChange}
                   value={formik.values.id}
-                />
+                />{" "}
               </div>{" "}
               <div className={Sal.forms}>
                 <label htmlFor="title"> item name </label>{" "}
@@ -54,7 +53,7 @@ function Salesitems() {
                   name="title"
                   onChange={formik.handleChange}
                   value={formik.values.title}
-                />
+                />{" "}
               </div>{" "}
               <div className={Sal.forms}>
                 <label htmlFor="kg"> kg you have </label>{" "}
@@ -63,7 +62,7 @@ function Salesitems() {
                   name="kg"
                   onChange={formik.handleChange}
                   value={formik.values.kg}
-                />
+                />{" "}
               </div>{" "}
             </div>{" "}
             <div className={Post.bubble}>
@@ -71,9 +70,14 @@ function Salesitems() {
             </div>{" "}
             <div className={Post.headbox1}>
               <div className={Sal.forms1}>
-                <label htmlFor="photos"> photos </label>{" "}
-                <input type="file" name="photos" onChange={photos} multiple />
-              </div>
+                <label htmlFor="place">place </label>{" "}
+                <input
+                  type="text"
+                  name="place"
+                  onChange={formik.handleChange}
+                  value={formik.values.place}
+                />{" "}
+              </div>{" "}
               <div className={Sal.forms1}>
                 <label htmlFor="rate"> rate for 1 kg </label>{" "}
                 <input
@@ -81,7 +85,7 @@ function Salesitems() {
                   name="rate"
                   onChange={formik.handleChange}
                   value={formik.values.rate}
-                />
+                />{" "}
               </div>{" "}
               <div className={Sal.forms1}>
                 <label htmlFor="discription"> discription </label>{" "}
@@ -95,14 +99,11 @@ function Salesitems() {
                 </textarea>{" "}
               </div>{" "}
             </div>{" "}
-            <div className={Post.button}>
+            <button type="submit" className={Sal.center1}>
               {" "}
-              <button type="submit" className={Sal.center1}>
-                {" "}
-                submit
-              </button>
-            </div>{" "}
-            {/* </form> */}
+              submit{" "}
+            </button>{" "}
+            {/* </form> */}{" "}
           </div>{" "}
         </form>{" "}
       </div>{" "}

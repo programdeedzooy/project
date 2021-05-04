@@ -20,11 +20,12 @@
     font-size: 20px;
 }
 
-.filter {
-    position: relative;
-    left: 1000px;
-    top: -30px;
+.but {
+    position: absolute;
+    left: 1020px;
+    top: 0px;
     color: black;
+    /* z-index: ; */
 }
 
 .title {
@@ -33,4 +34,9 @@
     left: 500px;
     font-size: 40px;
     color: blue;
+}
+
+.fil {
+    position: relative;
+    top: -20px;
 }

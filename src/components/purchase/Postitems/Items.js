@@ -7,11 +7,20 @@ import { Link } from "react-router-dom";
 import Img from "../../Extra/img";
 function Items(props) {
   const { id, name, imgs, Rs } = props.arr;
-  console.log(name, imgs, Rs);
+  // console.log(id, name, imgs, Rs);
+  const click = () => {
+    console.log("hiii");
+  };
+
+  const handler = () => {
+    let ids = props.arr.id;
+    // console.log("id", ids);
+    props.set(ids);
+  };
   return (
     <>
       <Tilt className="Title">
-        <Link to={`/purchaseintro/:${id}`}>
+        <div onClick={handler}>
           <div className="Tilt-inner">
             <div className={Sales.product}>
               <div className={Sales.circle}>
@@ -31,7 +40,7 @@ function Items(props) {
               <div className={Sales.rup}> ₨{Rs} </div>{" "}
             </div>{" "}
           </div>{" "}
-        </Link>{" "}
+        </div>
       </Tilt>{" "}
     </>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Sales from "../../sales/Salesintro/Salesintro.module.css";
 import Post from "./Postitems.module.css";
 import carrot from "../../../assets/carrot-svgrepo-com.svg";
@@ -7,171 +7,135 @@ import Tilt from "react-tilt";
 import { FaThLarge, FaCartPlus } from "react-icons/fa";
 import Reviwe from "./Review";
 import { Consumer } from "../../Context";
+import Items from "./Items";
+import Img from "../../Extra/img";
+import Searchbar from "../../Extra/Searchbar";
 function Postitems(props) {
+  const ida = props.match.params.id;
+  const idq = ida.slice(1);
+  console.log(idq);
+  const [ite, setite] = useState(idq);
+  const [count, setcount] = useState(1);
+  const [input, setinput] = useState("");
   return (
     <Consumer>
       {(value) => {
-        const { aaa } = value;
+        const { newobject } = value;
+
+        const { aaa, itemsarr } = value;
+
         const id = props.match.params.id;
-        console.log(id);
-        const postss = aaa.filter((aa) => id == aa.id);
-        console.log(postss);
-        const { name, Rs, com, review } = postss[0];
-        console.log(name);
+        const ids = id.slice(1);
+
+        const postss = aaa.filter((aa) => itemsarr[ids].name == aa.name);
+
+        var search = postss.filter((a) => {
+          console.log("qwer", a);
+          const aa = a.items.includes(input);
+          return aa;
+        });
+        var iii = search.length == 0 ? postss : search;
+
+        const x = iii.length;
+        const arritem = [];
+        for (let i = 0; i < x; i++) {
+          let arra = iii.slice(i * 4, (i + 1) * 4);
+          arritem.push(
+            <div className={Sales.box}>
+              {arra.map((arr) => (
+                <Items arr={arr} set={setite} />
+              ))}
+            </div>
+          );
+        }
+        let a = ite;
+        const itempos = aaa.filter((aa) => a == aa.id);
+        console.log("itempos", itempos);
+        const { name, com, Rs, imgs, review, kg, items } = itempos[0];
+        const addcount = () => {
+          if (count > 0 && kg > count) {
+            setcount(count + 1);
+          }
+        };
+        const subcount = () => {
+          if (count > 1 && kg >= count) {
+            setcount(count - 1);
+          }
+        };
+        const submitcart = () => {
+          let add;
+          add = {
+            id: itempos[0].id,
+            name,
+            kg,
+            Rs,
+            items,
+            imgs,
+            review,
+            cart: count,
+          };
+          newobject("add_cart", add);
+        };
+
+        console.log("input", input);
+
+        console.log("serach", search);
         return (
           <div>
-            {/* <Searchbar/> */}
+            <Searchbar set={setinput} placehold={true} />
             <div className={Sales.apps}>
               <div className={Post.back}>
-                <div className={Post.title}>Purchase</div>
-              </div>
+                <div className={Post.title}> Purchase </div>{" "}
+              </div>{" "}
               <div className={Post.itemDetials}>
                 <div className={Post.headbox}>
-                  <div className={Post.head}>{name}</div>
-                  <div className={Post.itemabout}>{com}</div>
+                  <div className={Post.head}>{name}</div>{" "}
+                  <div className={Post.itemabout}> {com}</div>{" "}
                   <div className={Post.itemimgbox}>
-                    <div className={Post.itemboximg}></div>
-                    <div className={Post.itemboximg}></div>
-                    <div className={Post.itemboximg}></div>
-                  </div>
-                </div>
+                    <div className={Post.Kgfont}>kg have:{kg}</div>
+                  </div>{" "}
+                </div>{" "}
                 <div className={Post.bubble}>
                   <div className={Post.items}>
-                    <img src={carrot} alt="" />
-                    <div className={Post.rup}>₨ {Rs}</div>
-                  </div>
-                </div>
+                    <Img item={imgs} />
+                    <div className={Post.rup}> ₨{Rs} </div>{" "}
+                  </div>{" "}
+                </div>{" "}
                 <div className={Post.headbox1}>
                   <div className={Post.Rating}>
-                    Review: <Reviwe review={review} />
-                  </div>
+                    Review: <Reviwe review={review} />{" "}
+                  </div>{" "}
                   <div className={Post.Rating}>
-                    items:
+                    place:
                     <div className={Post.itemimgbox}>
-                      <div className={Post.itemboximg1}></div>
-                      <div className={Post.itemboximg1}></div>
-                      <div className={Post.itemboximg1}></div>
-                    </div>
-                  </div>
+                      <div className={Post.itemscss}>{items}</div>
+                    </div>{" "}
+                  </div>{" "}
                   <div className={Post.Kg}>
-                    kg:
-                    <div className={Post.itemimgbox1}>
-                      <div className={Post.itemboximg2}>
-                        <span className={Post.center}> 1</span>{" "}
-                      </div>
-                      <div className={Post.itemboximg2}>
-                        <span className={Post.center}> 2</span>
-                      </div>
-                      <div className={Post.itemboximg2}>
-                        <span className={Post.center}> 3</span>
-                      </div>
-                    </div>
-                    <div className={Post.itemimgbox1}>
-                      <div className={Post.itemboximg2}>
-                        <span className={Post.center}> 4</span>{" "}
-                      </div>
-                      <div className={Post.itemboximg2}>
-                        <span className={Post.center}> 5</span>
-                      </div>
-                      <div className={Post.itemboximg2}>
-                        <span className={Post.center}> 6</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                    kg:{" "}
+                    <button className={Post.but} onClick={addcount}>
+                      +
+                    </button>{" "}
+                    {count}{" "}
+                    <button className={Post.but} onClick={subcount}>
+                      -
+                    </button>{" "}
+                  </div>{" "}
+                </div>{" "}
                 <div className={Post.button}>
                   {" "}
-                  <span className={Post.center1}>Add to cart</span>{" "}
-                </div>
-              </div>
-
+                  <span className={Post.center1} onClick={submitcart}>
+                    {" "}
+                    Add to cart{" "}
+                  </span>{" "}
+                </div>{" "}
+              </div>{" "}
               <div className={Post.box}>
-                <Tilt className="Title">
-                  <div className="Tilt-inner">
-                    <div className={Sales.product}>
-                      <div className={Sales.circle}>
-                        <div className={Sales.icon1}>
-                          <FaThLarge color="black" />
-                        </div>
-                      </div>
-                      <div className={Sales.circle1}>
-                        <div className={Sales.icon1}>
-                          <FaCartPlus color="black" />
-                        </div>
-                      </div>
-                      <div className={Sales.innerbox}>
-                        <img className={Sales.img} src={carrot} alt="" />
-                      </div>
-                      <div className={Sales.name}>carrot</div>
-                      <div className={Sales.rup}>₨ 30</div>
-                    </div>
-                  </div>
-                </Tilt>
-                <Tilt className="Title">
-                  <div className="Tilt-inner">
-                    <div className={Sales.product}>
-                      <div className={Sales.circle}>
-                        <div className={Sales.icon1}>
-                          <FaThLarge color="black" />
-                        </div>
-                      </div>
-                      <div className={Sales.circle1}>
-                        <div className={Sales.icon1}>
-                          <FaCartPlus color="black" />
-                        </div>
-                      </div>
-                      <div className={Sales.innerbox}>
-                        <img className={Sales.img} src={carrot} alt="" />
-                      </div>
-                      <div className={Sales.name}>carrot</div>
-                      <div className={Sales.rup}>₨ 30</div>
-                    </div>
-                  </div>
-                </Tilt>
-                <Tilt className="Title">
-                  <div className="Tilt-inner">
-                    <div className={Sales.product}>
-                      <div className={Sales.circle}>
-                        <div className={Sales.icon1}>
-                          <FaThLarge color="black" />
-                        </div>
-                      </div>
-                      <div className={Sales.circle1}>
-                        <div className={Sales.icon1}>
-                          <FaCartPlus color="black" />
-                        </div>
-                      </div>
-                      <div className={Sales.innerbox}>
-                        <img className={Sales.img} src={carrot} alt="" />
-                      </div>
-                      <div className={Sales.name}>carrot</div>
-                      <div className={Sales.rup}>₨ 30</div>
-                    </div>
-                  </div>
-                </Tilt>
-                <Tilt className="Title">
-                  <div className="Tilt-inner">
-                    <div className={Sales.product}>
-                      <div className={Sales.circle}>
-                        <div className={Sales.icon1}>
-                          <FaThLarge color="black" />
-                        </div>
-                      </div>
-                      <div className={Sales.circle1}>
-                        <div className={Sales.icon1}>
-                          <FaCartPlus color="black" />
-                        </div>
-                      </div>
-                      <div className={Sales.innerbox}>
-                        <img className={Sales.img} src={carrot} alt="" />
-                      </div>
-                      <div className={Sales.name}>carrot</div>
-                      <div className={Sales.rup}>₨ 30</div>
-                    </div>
-                  </div>
-                </Tilt>
+                {""}
+                {arritem}
+                {""}
               </div>
-            </div>
+            </div>{" "}
           </div>
         );
       }}

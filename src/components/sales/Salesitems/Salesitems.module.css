@@ -23,8 +23,9 @@ form {
 
 .center1 {
     position: relative;
-    left: 0%;
-    top: -100%;
+    left: 75%;
+    top: -450px;
+    /* top: -100%; */
     width: 170px;
     height: 40px;
     border-radius: 10px;

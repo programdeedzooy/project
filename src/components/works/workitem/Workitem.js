@@ -24,7 +24,9 @@ function Workitem(props) {
           <div>
             {/* <Searchbar/> */}
             <div className={Sales.apps}>
-              <div className={Post.back}></div>
+              <div className={Post.back}>
+                <div className={Post.title}> Works </div>
+              </div>
               <div className={Post.itemDetials}>
                 <div className={Post.headbox}>
                   <div className={Work.head}>ID:{id}</div>

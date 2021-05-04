@@ -21,7 +21,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Workintro from "./works/Workintro/Workintro";
 import { Provider } from "./Context";
 import Login from "./Extra/login";
-
+import Cartpage from "./cart/Cartpage";
 function App() {
   return (
     <Provider>
@@ -82,7 +82,7 @@ function App() {
 
                 <Route exact path="/Workintro/:id" component={Workitem} />
 
-                <Route exact path="/123" component={Login} />
+                <Route exact path="/cart" component={Cartpage} />
               </Switch>
             </div>
           </div>

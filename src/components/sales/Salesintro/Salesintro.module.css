@@ -113,8 +113,8 @@
 .name {
     position: relative;
     top: 20%;
-    left: 50%;
-    transform: translateX(-15%);
+    display: grid;
+    justify-items: center;
     color: darkblue;
     font-size: 25px;
 }

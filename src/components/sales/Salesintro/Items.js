@@ -4,8 +4,10 @@ import Tilt from "react-tilt";
 import carrot from "../../../assets/carrot-svgrepo-com.svg";
 import { FaThLarge, FaCartPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Img from "../../Extra/img";
 function Items(props) {
-  const { name, img, Rs, id } = props.arr;
+  const { name, imgs, Rs, id } = props.arr;
+  console.log(name, imgs, Rs, id);
   return (
     <>
       <Tilt className="Title">
@@ -23,7 +25,7 @@ function Items(props) {
                 </div>
               </div>
               <div className={Sales.innerbox}>
-                <img className={Sales.img} src={carrot} alt="" />
+                <Img item={imgs} />
               </div>
               <div className={Sales.name}>{name}</div>
               <div className={Sales.rup}>₨ {Rs}</div>
