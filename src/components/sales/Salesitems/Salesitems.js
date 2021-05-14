@@ -1,22 +1,40 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Sales from "../Salesintro/Salesintro.module.css";
 import Post from "../../purchase/Postitems/Postitems.module.css";
 import carrot from "../../../assets/carrot-svgrepo-com.svg";
 import { FaStar } from "react-icons/fa";
 import Sal from "./Salesitems.module.css";
 import { useFormik } from "formik";
+import { Usercontext } from "../../../aaaaa";
+import axios from "axios";
 
-function Salesitems() {
+function Salesitems(props) {
+  const context = useContext(Usercontext);
+  const item = context.itemsarrState;
+  console.log("items", item);
+  const idd = props.match.params.id;
+  const id = idd.slice(1);
+  const filters = item.filter((it) => it.id == id);
+  console.log("filter", filters);
+  // console.log("idd", id);
   const initialValues = {
     id: "",
-    title: "",
+    fruitid: filters[0].fruitid,
+    name: filters[0].name,
     kg: "",
-    photos: "",
-    rate: "",
-    discription: "",
+    imgs: filters[0].imgs,
+    review: 3,
+    items: "",
+    Rs: "",
+    com: "",
   };
 
-  const onSubmit = (values) => {
+  const onSubmit = async (values) => {
+    await axios
+      .post("http://localhost:2000/Peritems", values)
+      .then((res) => console.log("send ", res.status))
+      .catch((err) => console.log("err", err));
+    context.dischas("change");
     console.log("values", values);
   };
   const formik = useFormik({
@@ -52,7 +70,7 @@ function Salesitems() {
                   type="text"
                   name="title"
                   onChange={formik.handleChange}
-                  value={formik.values.title}
+                  value={formik.values.name}
                 />{" "}
               </div>{" "}
               <div className={Sal.forms}>
@@ -70,30 +88,30 @@ function Salesitems() {
             </div>{" "}
             <div className={Post.headbox1}>
               <div className={Sal.forms1}>
-                <label htmlFor="place">place </label>{" "}
+                <label htmlFor="items">place </label>{" "}
                 <input
                   type="text"
-                  name="place"
+                  name="items"
                   onChange={formik.handleChange}
-                  value={formik.values.place}
+                  value={formik.values.itmes}
                 />{" "}
               </div>{" "}
               <div className={Sal.forms1}>
-                <label htmlFor="rate"> rate for 1 kg </label>{" "}
+                <label htmlFor="Rs"> rate for 1 kg </label>{" "}
                 <input
                   type="text"
-                  name="rate"
+                  name="Rs"
                   onChange={formik.handleChange}
-                  value={formik.values.rate}
+                  value={formik.values.Rs}
                 />{" "}
               </div>{" "}
               <div className={Sal.forms1}>
-                <label htmlFor="discription"> discription </label>{" "}
+                <label htmlFor="com"> discription </label>{" "}
                 <textarea
-                  name="discription"
+                  name="com"
                   id="discription"
                   onChange={formik.handleChange}
-                  value={formik.values.discription}
+                  value={formik.values.com}
                 >
                   {" "}
                 </textarea>{" "}

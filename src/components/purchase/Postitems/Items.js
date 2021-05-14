@@ -13,7 +13,7 @@ function Items(props) {
   };
 
   const handler = () => {
-    let ids = props.arr.id;
+    let ids = props.arr._id;
     // console.log("id", ids);
     props.set(ids);
   };

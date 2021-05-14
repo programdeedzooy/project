@@ -19,12 +19,15 @@ import Salesitems from "./sales/Salesitems/Salesitems";
 import Workitem from "./works/workitem/Workitem";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Workintro from "./works/Workintro/Workintro";
-import { Provider } from "./Context";
+import { Providers } from "./Context";
+// import { Aaaaa } from "../aaaaa";
 import Login from "./Extra/login";
 import Cartpage from "./cart/Cartpage";
+import Aaaaa from "../aaaaa";
+import Showit from "../showit";
 function App() {
   return (
-    <Provider>
+    <Providers>
       <Router>
         <div>
           <div className="center">
@@ -83,12 +86,14 @@ function App() {
                 <Route exact path="/Workintro/:id" component={Workitem} />
 
                 <Route exact path="/cart" component={Cartpage} />
+
+                <Route exact path="/123" component={Showit} />
               </Switch>
             </div>
           </div>
         </div>
       </Router>
-    </Provider>
+    </Providers>
   );
 }
 
