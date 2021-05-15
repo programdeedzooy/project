@@ -8,7 +8,7 @@ import { Usercontext } from "../../aaaaa";
 
 function Items(props) {
   const usercontexts = useContext(Usercontext);
-  console.log("props", props.arr);
+  // console.log("props", props.arr);
   const { _id, Rs, cart, imgs, items, itemid, kg, name, review } = props.arr;
   const star = review;
   var a = star;
@@ -34,14 +34,14 @@ function Items(props) {
     };
 
     var cha = kgg + cart;
-    console.log(kg);
-    console.log(cart);
-    console.log(data);
+    // console.log(kg);
+    // console.log(cart);
+    // console.log(data);
     let update = {
       _id: itemid,
       kg: cha,
     };
-    console.log(update);
+    // console.log(update);
     await axios
       .delete("http://localhost:2000/cart", data)
       .then((res) => console.log(res))

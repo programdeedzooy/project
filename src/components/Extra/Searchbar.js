@@ -5,8 +5,10 @@ import Sales from "../sales/Salesintro/Salesintro.module.css";
 import { Link } from "react-router-dom";
 
 function Searchbar(props) {
-  let icon;
-  icon = true;
+  console.log(props.icon);
+  let icons;
+  let icon = props.icon == true ? false : true;
+  // icon = true;
   var ic =
     icon === true ? (
       <Link to="/cart">

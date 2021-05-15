@@ -43,7 +43,9 @@ function Aaaaa(props) {
   const [itemarr, dispatch] = useReducer(reducer, initialState);
   const [item, disitem] = useReducer(reducer, initialState);
   const [cart, discart] = useReducer(reducer, initialState);
+  const [deliver, disdeliver] = useReducer(reducer, initialState);
   const [cha, discha] = useReducer(reduxss, change);
+
   const fetchitemarr = useCallback(async () => {
     await axios
       .get("http://localhost:2000/items")
@@ -83,16 +85,31 @@ function Aaaaa(props) {
       });
   });
 
+  const fetchDeliver = useCallback(async () => {
+    await axios
+      .get("http://localhost:2000/deliver")
+      .then((res) => {
+        console.log("deliver", res.data);
+        disdeliver({ type: "SUCCESS", payload: res.data });
+      })
+      .catch((err) => {
+        // console.log(err);
+        disdeliver({ type: "ERROR" });
+      });
+  });
+
   useEffect(async () => {
     fetchitemarr();
     fetchitem();
     fetchcart();
+    fetchDeliver();
   }, []);
 
   useEffect(async () => {
     // fetchitemarr();
     await fetchitem();
     await fetchcart();
+    await fetchDeliver();
   }, [cha]);
 
   return (
@@ -107,21 +124,23 @@ function Aaaaa(props) {
           cartDis: discart,
           chas: cha,
           dischas: discha,
+          disdel: disdeliver,
+          del: deliver.post,
         }}
       >
         {/* {itemarr.loading ? "loading" : itemarr.post[0].name} */}
-        {/* {itemarr.loading ? "loading" : item.post[0].name} */}
-        {/* {console.log("arritem", item.post)} */}
+        {/* {itemarr.loading ? "loading" : item.post[0].name} */}{" "}
+        {/* {console.log("arritem", item.post)} */}{" "}
         <button
           onClick={() => {
             discha("change");
           }}
         >
           {" "}
-          cha - {cha}
-        </button>
+          cha - {cha}{" "}
+        </button>{" "}
         <App />
-      </Usercontext.Provider>
+      </Usercontext.Provider>{" "}
     </div>
   );
 }

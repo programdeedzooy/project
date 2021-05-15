@@ -253,7 +253,7 @@
         .inputnum {
             position: relative;
             top: 130px;
-            left: -60px;
+            left: -10px;
             border: 0px;
             border-bottom: 20px;
             height: 20px;
@@ -267,7 +267,7 @@
         .forname {
             position: relative;
             top: 160px;
-            left: -325px;
+            left: -280px;
         }
         
         .inputname {
@@ -286,7 +286,7 @@
         
         .divdate {
             position: relative;
-            top: 170px;
+            top: 190px;
             left: 40px;
         }
         
@@ -300,6 +300,7 @@
             position: relative;
             /* top: 220px;
             left: -250px; */
+            width: 150px !important;
             border: 0px;
             border-bottom: 20px;
             height: 20px;
@@ -313,7 +314,7 @@
         .divcvv {
             position: relative;
             left: 270px;
-            top: 130px;
+            top: 140px;
         }
         
         .forcvv {
@@ -352,4 +353,24 @@
             position: relative;
             top: -10px;
             left: -10px;
+        }
+        
+        .inputphone {
+            position: relative;
+            top: 170px;
+            left: -19px;
+            border: 0px;
+            border-bottom: 20px;
+            height: 20px;
+        }
+        
+        .inputphone:focus {
+            outline: 0px;
+            /* color: #2575fc; */
+        }
+        
+        .phone {
+            position: relative;
+            left: 30px;
+            top: 140px;
         }
