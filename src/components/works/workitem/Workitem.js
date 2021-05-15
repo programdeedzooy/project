@@ -13,6 +13,7 @@ import { Consumer } from "../../Context";
 import { Usercontext } from "../../../aaaaa";
 import Searchbar from "../../Extra/Searchbar";
 import Img from "../../Extra/img";
+
 function Workitem(props) {
   const usecontext = useContext(Usercontext);
 
@@ -30,7 +31,7 @@ function Workitem(props) {
   //   to: "palani",
   //   kg: "4",
   // };
-  const { cname, from, to, kg, imgs } = items[0];
+  const { cname, from, to, kg, imgs, street } = items[0];
   return (
     <div>
       {" "}
@@ -60,12 +61,11 @@ function Workitem(props) {
           </div>{" "}
           <div className={Post.bubble}>
             <div className={Post.items}>
-              <Img item={imgs} />
-              <div className={Post.rup}> ₨30 </div>{" "}
+              <Img item={imgs} /> <div className={Post.rup}> ₨30 </div>{" "}
             </div>{" "}
           </div>{" "}
           <div className={Post.headbox1}>
-            <div className={Work.timing}> Timing: 3 pm - 3.30 pm </div>{" "}
+            <div className={Work.timing}> address : {street} </div>{" "}
             <div className={Work.trans}>
               trans:
               <div className={Post.itemimgbox1}>
@@ -103,10 +103,10 @@ function Workitem(props) {
               </div>{" "}
             </div>{" "}
           </div>{" "}
-          <div className={Post.button}>
+          <button className={Post.button}>
             {" "}
-            <span className={Post.center1}> add </span>{" "}
-          </div>{" "}
+            <span> add </span>{" "}
+          </button>{" "}
         </div>{" "}
       </div>{" "}
     </div>

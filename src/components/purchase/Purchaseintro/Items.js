@@ -12,7 +12,7 @@ function Items(props) {
   return (
     <>
       <Tilt className="Title">
-        <Link to={`/purchaseintro/:${id}`}>
+        <Link to={`/purchaseintro/:${name}`}>
           <div className="Tilt-inner">
             <div className={Sales.product}>
               <div className={Sales.circle}>

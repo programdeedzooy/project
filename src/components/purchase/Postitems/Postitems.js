@@ -13,6 +13,7 @@ import Searchbar from "../../Extra/Searchbar";
 import { Usercontext } from "../../../aaaaa";
 import { useContext } from "react";
 import axios from "axios";
+import toastr from "toastr";
 
 function Postitems(props) {
   const usercontext = useContext(Usercontext);
@@ -27,9 +28,9 @@ function Postitems(props) {
   // const { aaa, itemsarr } = value;
 
   const id = props.match.params.id;
-  const ids = id.slice(1);
+  const namess = id.slice(1);
 
-  const postss = aaa.filter((aa) => itemsarr[ids].name == aa.name);
+  const postss = aaa.filter((aa) => (namess == aa.name) & (aa.kg > 0));
 
   var search = postss.filter((a) => {
     // console.log("qwer", a);
@@ -38,6 +39,8 @@ function Postitems(props) {
   });
   var iii = search.length == 0 ? postss : search;
   const [ite, setite] = useState(iii[0]._id);
+  console.log("iii", iii);
+  console.log("iddd", iii[0]._id);
   const x = iii.length;
   const arritem = [];
   for (let i = 0; i < x; i++) {
@@ -96,6 +99,8 @@ function Postitems(props) {
       .catch((err) => console.log(err));
 
     usercontext.dischas("change");
+    // toastr.warning("SUCCESS");
+
     // newobject("add_cart", add);
   };
 
@@ -143,13 +148,10 @@ function Postitems(props) {
               </button>{" "}
             </div>{" "}
           </div>{" "}
-          <div className={Post.button}>
+          <button className={Post.button}>
             {" "}
-            <span className={Post.center1} onClick={submitcart}>
-              {" "}
-              Add to cart{" "}
-            </span>{" "}
-          </div>{" "}
+            <span onClick={submitcart}> Add to cart </span>{" "}
+          </button>{" "}
         </div>{" "}
         <div className={Post.box}>
           {" "}
