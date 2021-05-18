@@ -33,6 +33,7 @@
         "scrollmagic": "^2.0.8",
         "scrollmagic-plugin-gsap": "^1.0.4",
         "toastr": "^2.1.4",
+        "universal-cookie": "^4.0.4",
         "web-vitals": "^1.0.1",
         "yup": "^0.32.9"
     },

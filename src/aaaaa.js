@@ -51,7 +51,10 @@ function Aaaaa(props) {
       .get("http://localhost:2000/items")
       .then((res) => {
         console.log("a", res.data);
-        dispatch({ type: "SUCCESS", payload: res.data });
+        dispatch(
+          { type: "SUCCESS", payload: res.data },
+          { withCredentials: true }
+        );
       })
       .catch((err) => {
         console.log(err);
@@ -61,7 +64,7 @@ function Aaaaa(props) {
 
   const fetchitem = useCallback(async () => {
     await axios
-      .get("http://localhost:2000/Peritems")
+      .get("http://localhost:2000/Peritems", { withCredentials: true })
       .then((res) => {
         console.log("item", res.data);
         disitem({ type: "SUCCESS", payload: res.data });
@@ -74,7 +77,7 @@ function Aaaaa(props) {
 
   const fetchcart = useCallback(async () => {
     await axios
-      .get("http://localhost:2000/cart")
+      .get("http://localhost:2000/cart", { withCredentials: true })
       .then((res) => {
         console.log("cart", res.data);
         discart({ type: "SUCCESS", payload: res.data });
@@ -87,7 +90,7 @@ function Aaaaa(props) {
 
   const fetchDeliver = useCallback(async () => {
     await axios
-      .get("http://localhost:2000/deliver")
+      .get("http://localhost:2000/deliver", { withCredentials: true })
       .then((res) => {
         console.log("deliver", res.data);
         disdeliver({ type: "SUCCESS", payload: res.data });
@@ -128,7 +131,7 @@ function Aaaaa(props) {
           del: deliver.post,
         }}
       >
-        {/* {itemarr.loading ? "loading" : itemarr.post[0].name} */}
+        {/* {itemarr.loading ? "loading" : itemarr.post[0].name} */}{" "}
         {/* {itemarr.loading ? "loading" : item.post[0].name} */}{" "}
         {/* {console.log("arritem", item.post)} */}{" "}
         <button

@@ -4,7 +4,9 @@ import "./index.css";
 // import App from './App';
 import Aaaaa from "./aaaaa";
 import reportWebVitals from "./reportWebVitals";
+import axios from "axios";
 
+axios.defaults.withCredentials = true;
 ReactDOM.render(
   <React.StrictMode>
     <Aaaaa />

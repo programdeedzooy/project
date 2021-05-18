@@ -13,15 +13,18 @@ import {
   FaLongArrowAltRight,
   FaFilter,
 } from "react-icons/fa";
+import { Redirect } from "react-router-dom";
 
 function Workintro() {
   const usecontext = useContext(Usercontext);
   const [input, setinput] = useState("");
 
   // const { aa } = value;
+
   const aa = usecontext.del;
   console.log("aa", aa);
-  if (aa.length > 0) {
+
+  try {
     var search = aa.filter((a) => {
       const aq = a.from.includes(input);
       return aq;
@@ -36,37 +39,42 @@ function Workintro() {
       x++;
       // console.log(x);
     }
-    var arritem = [];
-    for (let i = 0; i < x; i++) {
-      let arra = iii.slice(i * 4, (i + 1) * 4);
-      arritem.push(
-        <div className={Sales.box}>
-          {arra.map((ar) => (
-            <Items arr={ar} key={ar.id} />
-          ))}
-        </div>
-      );
-    }
+  } catch {
+    return <Redirect to="/" />;
   }
+  var arritem = [];
+  for (let i = 0; i < x; i++) {
+    let arra = iii.slice(i * 4, (i + 1) * 4);
+    arritem.push(
+      <div className={Sales.box}>
+        {" "}
+        {arra.map((ar) => (
+          <Items arr={ar} key={ar.id} />
+        ))}{" "}
+      </div>
+    );
+  }
+
   var deliversss = aa.length > 0 ? arritem : null;
   console.log("input", input);
 
   console.log("serach", search);
   return (
     <div>
-      <Searchbar set={setinput} placehold={true} />
+      <Searchbar set={setinput} placehold={true} />{" "}
       <div className={Sales.apps}>
+        {" "}
         {/* <button className={Work.but}>
-                <div className={Work.fil}>
-                  <FaFilter color="black" />
-                  filter
-                </div>
-              </button> */}
+                            <div className={Work.fil}>
+                              <FaFilter color="black" />
+                              filter
+                            </div>
+                          </button> */}{" "}
         <div className={Sales.back}>
-          <div className={Work.title}>Works</div>
-        </div>
-        {deliversss}
-      </div>
+          <div className={Work.title}> Works </div>{" "}
+        </div>{" "}
+        {deliversss}{" "}
+      </div>{" "}
     </div>
   );
 }
