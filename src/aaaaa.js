@@ -11,12 +11,25 @@ const initialState = {
 
 const change = 0;
 
+const varlogout = true;
+
 export const reduxss = (state, action) => {
   switch (action) {
     case "change":
       return state + 1;
     default:
       return state;
+  }
+};
+
+export const relog = (state, action) => {
+  switch (action) {
+    case "true":
+      return true;
+    case "false":
+      return false;
+    default:
+      return false;
   }
 };
 
@@ -45,6 +58,7 @@ function Aaaaa(props) {
   const [cart, discart] = useReducer(reducer, initialState);
   const [deliver, disdeliver] = useReducer(reducer, initialState);
   const [cha, discha] = useReducer(reduxss, change);
+  const [logoutvar, dislog] = useReducer(relog, varlogout);
 
   const fetchitemarr = useCallback(async () => {
     await axios
@@ -129,6 +143,8 @@ function Aaaaa(props) {
           dischas: discha,
           disdel: disdeliver,
           del: deliver.post,
+          logoutvar: logoutvar,
+          dislog: dislog,
         }}
       >
         {/* {itemarr.loading ? "loading" : itemarr.post[0].name} */}{" "}

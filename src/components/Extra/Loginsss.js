@@ -6,7 +6,9 @@ import { Usercontext } from "../../aaaaa";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import Cookies from "universal-cookie";
+
 var login = false;
+var err;
 const initialValues = {
   email: "",
   pass: "",
@@ -25,10 +27,17 @@ const onSubmit = async (values) => {
       cookies.set("jwt", res.data.token, { htmlOnly: true });
       if (res.data.login) {
         login = true;
+        if (!window.location.hash) {
+          window.location = window.location + "#loaded";
+          window.location.reload();
+        }
       }
-      if (!window.location.hash) {
-        window.location = window.location + "#loaded";
-        window.location.reload();
+      if (res.data.err) {
+        err = "Error:" + res.data.err;
+        console.log("erris", err);
+      } else {
+        err = "";
+        console.log("erris", err);
       }
     })
     .catch((err) => {
@@ -63,6 +72,8 @@ const validate = (values) => {
 };
 
 function Loginsss() {
+  const constext = useContext(Usercontext);
+  // const loglog = context.dislog;
   const formik = useFormik({
     initialValues,
     onSubmit,
@@ -70,6 +81,7 @@ function Loginsss() {
   });
 
   if (login == true) {
+    constext.dislog("false");
     return <Redirect to={"/sales"} />;
   }
 
@@ -117,6 +129,7 @@ function Loginsss() {
         {" "}
         submit{" "}
       </button>{" "}
+      <div className={log.err}>{err}</div>
     </form>
   );
 }

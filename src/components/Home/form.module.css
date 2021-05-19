@@ -68,3 +68,9 @@
     left: 20px;
     top: 0px;
 }
+
+.err {
+    position: relative;
+    /* left: 100px */
+    color: aliceblue;
+}
