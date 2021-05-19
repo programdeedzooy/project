@@ -5,6 +5,7 @@ import Loginsss from "../Extra/Loginsss";
 import { Usercontext } from "../../aaaaa";
 import axios from "axios";
 import Cookies from "universal-cookie";
+
 function Stylebox() {
   const usercontexts = useContext(Usercontext);
 
@@ -42,6 +43,7 @@ function Stylebox() {
         if (res.data.login) {
           if (!window.location.hash) {
             window.location = window.location + "#loaded";
+
             window.location.reload();
           }
           usercontexts.dislog("true");
@@ -87,7 +89,7 @@ function Stylebox() {
   const modal = showModal ? ma : null;
   const logsss =
     usercontexts.logoutvar == false ? (
-      <button onClick={handlelogout}>logout</button>
+      <button onClick={handlelogout}> logout </button>
     ) : (
       <button onClick={handleClick}> sign in /login</button>
     );
@@ -95,7 +97,7 @@ function Stylebox() {
   return (
     <div className="back">
       <div className="div">
-        <div className="login tog">{logsss}</div>{" "}
+        <div className="login tog"> {logsss} </div>{" "}
       </div>{" "}
       {modal} <div className="div1"> </div> <div className="div2"> </div>{" "}
     </div>
