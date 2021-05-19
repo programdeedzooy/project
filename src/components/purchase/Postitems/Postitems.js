@@ -81,6 +81,7 @@ function Postitems(props) {
       items,
       imgs,
       review,
+      idcart: usercontext.iddcart,
       cart: count,
     };
     console.log("add", add);

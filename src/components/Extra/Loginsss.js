@@ -129,7 +129,7 @@ function Loginsss() {
         {" "}
         submit{" "}
       </button>{" "}
-      <div className={log.err}>{err}</div>
+      <div className={log.err}> {err} </div>{" "}
     </form>
   );
 }
