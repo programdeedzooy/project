@@ -1,47 +1,37 @@
 import React, { useContext, useEffect, useState } from "react";
 import Cart from "./Cart.module.css";
-import Cleave from "cleave.js/react";
 import Card_sim from "../../assets/credit_card_chip.png";
 import Tilt from "react-tilt";
-import { event } from "jquery";
-import { Consumer } from "../../components/Context";
 import Items from "./items";
 import bio from "../../assets/bio.svg";
 import { Usercontext } from "../../aaaaa";
 import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Cartpage() {
   const usercontexts = useContext(Usercontext);
   const [scussess, setscussess] = useState(false);
-  // const [product, setproduct] = useState({
-  //   name: "React from fb",
-  //   price: 10,
-  //   productBy: "facebook",
-  // });
+
   const [name, setname] = useState("");
   const [street, setstreet] = useState("");
   const [City, setCity] = useState("");
   const [zip, setzip] = useState("");
   const [phone, setphone] = useState("");
-  // const { cart } = val;
   const cart = usercontexts.cartitem;
   var n = cart.length;
   var amount = 0;
-  // console.log("length", n);
 
   var aitm = cart.map((it) => <Items arr={it} />);
   var aa = cart.length > 0 ? aitm : null;
 
-  //stat is replace by props
   if (n) {
     for (let i = 0; i < n; i++) {
       let aa = cart[i].Rs * cart[i].cart;
-      // console.log(aa);
       amount = amount + aa;
     }
   }
-  // console.log("amount", amount);
   const [product, setproduct] = useState({
     name: "product",
     price: amount,
@@ -57,7 +47,16 @@ function Cartpage() {
       setscussess(true);
     }
   };
-
+  const notify = () =>
+    toast.success("🏇 add to delivary", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   useEffect(async () => {
     console.log(scussess);
     if (scussess == true) {
@@ -87,7 +86,7 @@ function Cartpage() {
             .then((res) => console.log(res))
             .catch((err) => console.log(err));
         });
-
+      notify();
       setscussess(false);
       usercontexts.dischas("change");
     }
@@ -95,9 +94,9 @@ function Cartpage() {
 
   return (
     <div className={Cart.box}>
+      <ToastContainer />
       <div className={Cart.box1}>
-        <div className={Cart.title}> My Cart </div>
-        {aa}
+        <div className={Cart.title}> My Cart </div> {aa}{" "}
         <div className={Cart.total}>
           <div className={Cart.outcircle}>
             <div className={Cart.cardboximg}>
@@ -160,14 +159,14 @@ function Cartpage() {
               onChange={(event) => {
                 setphone(event.target.value);
               }}
-            />
-          </div>
+            />{" "}
+          </div>{" "}
           <div className={Cart.divdate}>
             <div className={Cart.gap}>
               <label htmlFor="city" className={Cart.fordate}>
                 city{" "}
               </label>{" "}
-            </div>
+            </div>{" "}
             <input
               type="text"
               className={Cart.inputDate}
@@ -176,13 +175,13 @@ function Cartpage() {
                 setCity(event.target.value);
               }}
             />{" "}
-          </div>
+          </div>{" "}
           <div className={Cart.divcvv}>
             <div className={Cart.gap}>
               <label htmlFor=" zip" className={Cart.forcvv}>
                 ZIP CODE{" "}
               </label>{" "}
-            </div>
+            </div>{" "}
             <input
               className={Cart.inputcvv}
               type="number"
@@ -212,16 +211,3 @@ function Cartpage() {
 }
 
 export default Cartpage;
-
-{
-  /* <Cleave
-                placeholder="Enter your credit card number"
-                options={{ creditCard: true }}
-                onChange={onChange}
-              />
-              <Cleave
-                placeholder="yy/mm"
-                options={{ date: true }}
-                datePattern={["m", "y"]}
-              /> */
-}

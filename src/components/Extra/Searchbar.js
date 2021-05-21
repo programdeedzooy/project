@@ -8,7 +8,6 @@ function Searchbar(props) {
   console.log(props.icon);
   let icons;
   let icon = props.icon == true ? false : true;
-  // icon = true;
   var ic =
     icon === true ? (
       <Link to="/cart">
@@ -18,8 +17,6 @@ function Searchbar(props) {
     ) : (
       <FaPlusCircle />
     );
-
-  // console.log(input);
 
   const onhandler = (event) => {
     let i = event.target.value;

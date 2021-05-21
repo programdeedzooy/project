@@ -1,7 +1,6 @@
 import React from "react";
 import Sales from "../../sales/Salesintro/Salesintro.module.css";
 import Tilt from "react-tilt";
-import carrot from "../../../assets/carrot-svgrepo-com.svg";
 import { FaThLarge, FaCartPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Img from "../../Extra/img";

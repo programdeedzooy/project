@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useFormik } from "formik";
+import { Formik, useFormik } from "formik";
 import log from "../Home/form.module.css";
 import { Consumer } from "../Context";
 import axios from "axios";
@@ -18,33 +18,6 @@ const initialValues = {
   address: "",
   add: "",
   newobject: "",
-};
-const onSubmit = async (values) => {
-  values.add = {
-    name: values.name,
-    birthday: values.birthday,
-    phone: values.phone,
-    email: values.email,
-    pass: values.pass,
-    address: values.address,
-  };
-  // axios.defaults.withCredentials = true;
-
-  await axios
-    .post("http://127.0.0.1:2000/sign", values.add, { withCredentials: true })
-    .then((res) => {
-      console.log("res", res);
-      // const cookies = new Cookies();
-      // cookies.set("token", res.data.token, { htmlOnly: true });
-      // console.log(cookies.get("token")); // Pacmanc.
-
-      // localStorage.setItem("token", res.data.token);
-      // login = true;
-    })
-    .catch((err) => {
-      console.log("err", err);
-    });
-  // values.newobject("add_Loginss", values.add);
 };
 
 const validate = (values) => {
@@ -72,6 +45,36 @@ const validate = (values) => {
 
 function Loginss(props) {
   const usecontext = useContext(Usercontext);
+
+  const refress = () => {
+    formik.values.name = "";
+    formik.values.birthday = "";
+    formik.values.phone = "";
+    formik.values.email = "";
+    formik.values.pass = "";
+    formik.values.address = "";
+  };
+
+  const onSubmit = async (values) => {
+    values.add = {
+      name: values.name,
+      birthday: values.birthday,
+      phone: values.phone,
+      email: values.email,
+      pass: values.pass,
+      address: values.address,
+    };
+
+    await axios
+      .post("http://127.0.0.1:2000/sign", values.add, { withCredentials: true })
+      .then((res) => {
+        console.log("res", res);
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
+    refress();
+  };
   const formik = useFormik({
     initialValues,
     onSubmit,
@@ -80,15 +83,6 @@ function Loginss(props) {
   if (login == true) {
     return <Redirect to={"/sales"} />;
   }
-
-  //  sin=usecontext.
-  // const { newobject, signin } = val;
-  // formik.values.newobject = newobject;
-  // signin.map((sin) => {
-  //   if (formik.values.email == sin.email) {
-  //     formik.errors.email = "email is alrady is taken";
-  //   }
-  // });
 
   return (
     <form className={log.tit} onSubmit={formik.handleSubmit}>
@@ -116,7 +110,7 @@ function Loginss(props) {
           <label forhtml="birthday" className={log.label}>
             Birthday:
           </label>{" "}
-        </div>
+        </div>{" "}
         <input
           type="date"
           id="birthday"

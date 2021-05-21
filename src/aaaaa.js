@@ -2,6 +2,7 @@ import React, { useState, useEffect, useReducer, useCallback } from "react";
 import axios from "axios";
 import App from "./App";
 import { use } from "matter-js";
+import Cookies from "universal-cookie";
 export const Usercontext = React.createContext();
 
 const initialState = {
@@ -67,17 +68,18 @@ function Aaaaa(props) {
   const [deliver, disdeliver] = useReducer(reducer, initialState);
   const [cha, discha] = useReducer(reduxss, change);
   const [logoutvar, dislog] = useReducer(relog, varlogout);
-  // const [idd, setidd] = useState(null);
-  var idd;
+  const cookies = new Cookies();
+  var idd = cookies.get("login");
 
-  const fetchidd = useCallback(async () => {
+  // console.log("cookies", cookies.get("login"));
+  // console.log(Cookies.get("login"));
+  const fetchidd = async () => {
     console.log("i am in ");
     await axios
       .get("http://127.0.0.1:2000/log", { withCredentials: true })
       .then((res) => {
         console.log("get_log", res);
         if (res.data.id) {
-          // setidd(res.data.id);
           idd = res.data.id;
           disidcart(res.data.id);
           console.log("idd", res.data.id);
@@ -86,7 +88,7 @@ function Aaaaa(props) {
       .catch((err) => {
         console.log("err", err);
       });
-  });
+  };
   const [iddcart, disidcart] = useReducer(reidcart, idd);
   const fetchitemarr = useCallback(async () => {
     await axios
@@ -112,11 +114,9 @@ function Aaaaa(props) {
         disitem({ type: "SUCCESS", payload: res.data });
       })
       .catch((err) => {
-        // console.log(err);
         disitem({ type: "ERROR" });
       });
   });
-  // console.log(`hi${idd}`);
   const fetchcart = useCallback(async () => {
     if (idd !== null) {
       await axios
@@ -146,12 +146,12 @@ function Aaaaa(props) {
         disdeliver({ type: "SUCCESS", payload: res.data });
       })
       .catch((err) => {
-        // console.log(err);
         disdeliver({ type: "ERROR" });
       });
   });
 
   useEffect(async () => {
+    fetchidd();
     fetchitemarr();
     fetchitem();
     fetchcart();
@@ -159,7 +159,6 @@ function Aaaaa(props) {
   }, []);
 
   useEffect(async () => {
-    // fetchitemarr();
     await fetchidd();
     await fetchitem();
     await fetchcart();
@@ -185,16 +184,11 @@ function Aaaaa(props) {
           iddcart: iddcart,
         }}
       >
-        {" "}
-        {/* {itemarr.loading ? "loading" : itemarr.post[0].name} */}{" "}
-        {/* {itemarr.loading ? "loading" : item.post[0].name} */}{" "}
-        {/* {console.log("arritem", item.post)} */}{" "}
         <button
           onClick={() => {
             discha("change");
           }}
         >
-          {" "}
           cha - {cha}{" "}
         </button>{" "}
         <App />

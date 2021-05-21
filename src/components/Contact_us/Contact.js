@@ -10,24 +10,53 @@ import {
 import "./contact.css";
 import { useFormik } from "formik";
 import { Consumer } from "../Context";
+import axios from "axios";
+import Cookies from "universal-cookie";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+const cookies = new Cookies();
+var idd = cookies.get("login");
 
 function Contact() {
   const [name, setname] = useState(" ");
   const initialValues = {
     name: "",
-    id: "",
+    id: idd,
     comments: "",
     add: "",
     newobject: "",
   };
 
-  const onSubmit = (values) => {
+  const refress = () => {
+    formik.values.name = "";
+    formik.values.comments = "";
+    formik.values.id = idd;
+  };
+
+  const notify = () =>
+    toast.success("👍 success", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  // notify();
+
+  const onSubmit = async (values) => {
     values.add = {
-      id: values.id,
+      id: idd,
       name: values.name,
-      comments: values.comments,
+      commands: values.comments,
     };
-    values.newobject("add_comments", values.add);
+    // values.newobject("add_comments", values.add);
+    let app = await axios.post("http://localhost:2000/com", values.add);
+    console.log("commands", app);
+    notify();
+    refress();
   };
 
   const validate = (values) => {
@@ -79,7 +108,7 @@ function Contact() {
             <div className="form-style">
               <form onSubmit={formik.handleSubmit}>
                 <div className="divvv">
-                  <div className="cen"> command </div>{" "}
+                  <div className="cen"> comment </div>{" "}
                   <label htmlFor="name"> Name </label>{" "}
                   <input
                     type="text"
@@ -102,7 +131,7 @@ function Contact() {
                     name="id"
                     className="id"
                     onChange={formik.handleChange}
-                    value={formik.values.id}
+                    value={idd}
                     onBlur={formik.handleBlur}
                   />{" "}
                   {formik.touched.id && formik.errors.id ? (
@@ -110,7 +139,7 @@ function Contact() {
                   ) : null}{" "}
                 </div>{" "}
                 <div className="divvv">
-                  <label htmlFor="comments"> command </label>{" "}
+                  <label htmlFor="comments"> comment </label>{" "}
                   <textarea
                     name="comments"
                     id="comments"
@@ -153,6 +182,7 @@ function Contact() {
                 />{" "}
               </div>{" "}
             </div>{" "}
+            <ToastContainer />
           </div>
         );
       }}

@@ -9,19 +9,17 @@ import {
   MDBModalFooter,
 } from "mdbreact";
 class Body extends Component {
- 
   render() {
     return (
       <div className="con">
-       
-        <div className="hello">hellow</div>
-        <div className="wel">brother/sisters</div>
+        <div className="hello"> hello </div>{" "}
+        <div className="wel"> brothers / sisters </div>{" "}
         <div className="para">
-          <p>this web site is use for all people.</p>
+          <p> this web site is used for all . </p>{" "}
           <p>
-            thanks for wisht this page <span>@G&k</span>
-          </p>
-        </div>
+            thank you for visit this page <span> @G & k </span>{" "}
+          </p>{" "}
+        </div>{" "}
       </div>
     );
   }

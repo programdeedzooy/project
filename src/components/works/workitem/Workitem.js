@@ -17,20 +17,12 @@ import Img from "../../Extra/img";
 function Workitem(props) {
   const usecontext = useContext(Usercontext);
 
-  // const { aa } = value;
   const aa = usecontext.del;
   const ida = props.match.params.id;
-  // const ids = ida.slice(1);
   console.log(ida);
   console.log(aa);
   const items = aa.filter((aa) => ida == aa._id);
-  // console.log(itemss);
-  // var items = {
-  //   id: "345",
-  //   from: "covi",
-  //   to: "palani",
-  //   kg: "4",
-  // };
+
   const { cname, from, to, kg, imgs, street } = items[0];
   return (
     <div>
@@ -65,7 +57,7 @@ function Workitem(props) {
             </div>{" "}
           </div>{" "}
           <div className={Post.headbox1}>
-            <div className={Work.timing}> address : {street} </div>{" "}
+            <div className={Work.timing}> address: {street} </div>{" "}
             <div className={Work.trans}>
               trans:
               <div className={Post.itemimgbox1}>

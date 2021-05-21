@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
-// import { Usercontext } from "./aaaaa";
 import { Usercontext } from "./aaaaa";
 import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Showit() {
   const usercontexts = useContext(Usercontext);
@@ -26,18 +27,23 @@ function Showit() {
         console.log("err", err);
       });
   };
+  const notify = () =>
+    toast.dark("🦄 Wow so easy!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  // notify();
   return (
     <div>
-      <StripeCheckout
-        stripeKey={process.env.REACT_APP_KEY}
-        token={makepay}
-        name="BUY React"
-        amount={product.price * 100}
-      >
-        {/* <button className={Cart.button} onClick={sub}>
-              pay ₹{amount}
-            </button> */}
-      </StripeCheckout>
+      <div>
+        <button onClick={notify}> Notify! </button>
+        <ToastContainer />
+      </div>
     </div>
   );
 }

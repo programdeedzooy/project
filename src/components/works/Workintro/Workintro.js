@@ -19,8 +19,6 @@ function Workintro() {
   const usecontext = useContext(Usercontext);
   const [input, setinput] = useState("");
 
-  // const { aa } = value;
-
   const aa = usecontext.del;
   console.log("aa", aa);
 
@@ -64,12 +62,6 @@ function Workintro() {
       <Searchbar set={setinput} placehold={true} />{" "}
       <div className={Sales.apps}>
         {" "}
-        {/* <button className={Work.but}>
-                            <div className={Work.fil}>
-                              <FaFilter color="black" />
-                              filter
-                            </div>
-                          </button> */}{" "}
         <div className={Sales.back}>
           <div className={Work.title}> Works </div>{" "}
         </div>{" "}

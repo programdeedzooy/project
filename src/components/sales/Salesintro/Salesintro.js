@@ -13,7 +13,6 @@ function Salesintro() {
   var itemsarr = usercontexts.itemsarrState;
   const [input, setinput] = useState("");
 
-  // const { itemsarr } = value;
   try {
     var search = itemsarr.filter((a) => {
       const aa = a.name.includes(input);
@@ -47,7 +46,6 @@ function Salesintro() {
     );
   }
 
-  // console.log(<Items />);
   return (
     <div>
       <Searchbar set={setinput} placehold={false} />{" "}

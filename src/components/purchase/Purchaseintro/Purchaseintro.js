@@ -3,17 +3,14 @@ import Sales from "../../sales/Salesintro/Salesintro.module.css";
 import Searchbar from "../../Extra/Searchbar";
 import Items from "./Items";
 import Post from "../Postitems/Postitems.module.css";
-import { Consumer } from "../../Context";
 import { Usercontext } from "../../../aaaaa";
 import { useContext } from "react";
 import { Redirect } from "react-router-dom";
 
 function Purchaseintro() {
   const usecontext = useContext(Usercontext);
-  const [reload, setreload] = useState(true);
   const [input, setinput] = useState("");
 
-  // var { itemsarr } = value;
   var itemsarr = usecontext.itemsarrState;
   try {
     var search = itemsarr.filter((a) => {
@@ -29,14 +26,9 @@ function Purchaseintro() {
     } else {
       x = parseInt(x);
       x++;
-      // console.log(x);
     }
-
-    // window.location.reload();
   } catch {
-    // window.location.reload();
     return <Redirect to="/" />;
-    // console.log("catch");
   }
 
   const arritem = [];
@@ -55,8 +47,6 @@ function Purchaseintro() {
 
   console.log("serach", search);
 
-  // console.log(<Items />);
-  // console.log(arritem);
   return (
     <div>
       <Searchbar set={setinput} placehold={false} />{" "}

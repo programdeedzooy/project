@@ -1,19 +1,15 @@
 import React, { useState } from "react";
 import Sales from "../../sales/Salesintro/Salesintro.module.css";
 import Post from "./Postitems.module.css";
-import carrot from "../../../assets/carrot-svgrepo-com.svg";
-import { FaStar } from "react-icons/fa";
-import Tilt from "react-tilt";
-import { FaThLarge, FaCartPlus } from "react-icons/fa";
 import Reviwe from "./Review";
-import { Consumer } from "../../Context";
 import Items from "./Items";
 import Img from "../../Extra/img";
 import Searchbar from "../../Extra/Searchbar";
 import { Usercontext } from "../../../aaaaa";
 import { useContext } from "react";
 import axios from "axios";
-import toastr from "toastr";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Postitems(props) {
   const usercontext = useContext(Usercontext);
@@ -22,10 +18,19 @@ function Postitems(props) {
   const [count, setcount] = useState(1);
   const [input, setinput] = useState("");
 
+  const notify = () =>
+    toast.success("🚀 add to cart", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
   var aaa = usercontext.itemitem;
   var itemsarr = usercontext.itemsarrState;
-
-  // const { aaa, itemsarr } = value;
 
   const id = props.match.params.id;
   const namess = id.slice(1);
@@ -33,7 +38,6 @@ function Postitems(props) {
   const postss = aaa.filter((aa) => (namess == aa.name) & (aa.kg > 0));
 
   var search = postss.filter((a) => {
-    // console.log("qwer", a);
     const aa = a.items.includes(input);
     return aa;
   });
@@ -99,10 +103,8 @@ function Postitems(props) {
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
 
+    notify();
     usercontext.dischas("change");
-    // toastr.warning("SUCCESS");
-
-    // newobject("add_cart", add);
   };
 
   console.log("input", input);
@@ -110,6 +112,7 @@ function Postitems(props) {
   console.log("serach", search);
   return (
     <div>
+      <ToastContainer />
       <Searchbar set={setinput} placehold={true} />{" "}
       <div className={Sales.apps}>
         <div className={Post.back}>

@@ -20,7 +20,6 @@ import Workitem from "./works/workitem/Workitem";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Workintro from "./works/Workintro/Workintro";
 import { Providers } from "./Context";
-// import { Aaaaa } from "../aaaaa";
 import Login from "./Extra/login";
 import Cartpage from "./cart/Cartpage";
 import Aaaaa from "../aaaaa";
@@ -41,52 +40,33 @@ function App() {
                   <Rightarrow />
                   <Bubble />
                 </Route>
-
                 <Route exact path="/sales">
                   <Shome />
                   <Bubble />
                 </Route>
-
                 <Route exact path="/purchase">
                   <Purchase />
                   <Bubble />
                 </Route>
-
                 <Route exact path="/works">
                   <Works />
                   <Bubble />
                 </Route>
-
                 <Route exact path="/contact">
                   <Contact />
                   <Bubble />
                 </Route>
-
                 <Route exact path="/about">
                   <About />
                   <Bubble />
                 </Route>
-
-                <Route exact path="/Salesintro">
-                  <Salesintro />
-                </Route>
-
-                <Route exact path="/Purchaseintro">
-                  <Purchaseintro />
-                </Route>
-
+                <Route exact path="/Salesintro" component={Salesintro} />
+                <Route exact path="/Purchaseintro" component={Purchaseintro} />
                 <Route exact path="/Purchaseintro/:id" component={Postitems} />
-
                 <Route exact path="/Salesintro/:id" component={Salesitems} />
-
-                <Route exact path="/Workintro">
-                  <Workintro />
-                </Route>
-
+                <Route exact path="/Workintro" component={Workintro} />
                 <Route exact path="/Workintro/:id" component={Workitem} />
-
                 <Route exact path="/cart" component={Cartpage} />
-
                 <Route exact path="/123" component={Showit} />
               </Switch>
             </div>

@@ -22,9 +22,10 @@ const onSubmit = async (values) => {
   await axios
     .post("http://127.0.0.1:2000/log", values.add, { withCredentials: true })
     .then((res) => {
-      console.log("res", res);
+      console.log("login", res);
       const cookies = new Cookies();
       cookies.set("jwt", res.data.token, { htmlOnly: true });
+      cookies.set("login", res.data.login, { htmlOnly: true });
       if (res.data.login) {
         login = true;
         if (!window.location.hash) {

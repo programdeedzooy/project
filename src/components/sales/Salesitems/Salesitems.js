@@ -7,6 +7,11 @@ import Sal from "./Salesitems.module.css";
 import { useFormik } from "formik";
 import { Usercontext } from "../../../aaaaa";
 import axios from "axios";
+import uuid from "react-uuid";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import { Redirect } from "react-router-dom";
 
 function Salesitems(props) {
   const context = useContext(Usercontext);
@@ -16,9 +21,8 @@ function Salesitems(props) {
   const id = idd.slice(1);
   const filters = item.filter((it) => it.id == id);
   console.log("filter", filters);
-  // console.log("idd", id);
   const initialValues = {
-    id: "",
+    id: uuid(),
     fruitid: filters[0].fruitid,
     name: filters[0].name,
     kg: "",
@@ -28,14 +32,37 @@ function Salesitems(props) {
     Rs: "",
     com: "",
   };
-
+  const refress = () => {
+    formik.values.id = uuid();
+    formik.values.fruitid = filters[0].fruitid;
+    formik.values.name = filters[0].name;
+    formik.values.kg = "";
+    formik.values.imgs = filters[0].imgs;
+    formik.values.review = 3;
+    formik.values.items = "";
+    formik.values.Rs = "";
+    formik.values.com = "";
+  };
+  const notify = () =>
+    toast.success("🏄 success", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  var app;
   const onSubmit = async (values) => {
-    await axios
-      .post("http://localhost:2000/Peritems", values)
-      .then((res) => console.log("send ", res.status))
-      .catch((err) => console.log("err", err));
-    context.dischas("change");
+    app = await axios.post("http://localhost:2000/Peritems", values);
+
+    console.log("submit", app);
+    notify();
+    refress();
     console.log("values", values);
+
+    context.dischas("change");
   };
   const formik = useFormik({
     initialValues,
@@ -45,7 +72,6 @@ function Salesitems(props) {
   return (
     <div>
       {" "}
-      {/* <Searchbar/> */}{" "}
       <div className={Sales.apps}>
         <div className={Post.back}>
           <div className={Post.title}> Sales </div>{" "}
@@ -88,12 +114,12 @@ function Salesitems(props) {
             </div>{" "}
             <div className={Post.headbox1}>
               <div className={Sal.forms1}>
-                <label htmlFor="items">place </label>{" "}
+                <label htmlFor="items"> place </label>{" "}
                 <input
                   type="text"
                   name="items"
                   onChange={formik.handleChange}
-                  value={formik.values.itmes}
+                  value={formik.values.items}
                 />{" "}
               </div>{" "}
               <div className={Sal.forms1}>
@@ -125,6 +151,7 @@ function Salesitems(props) {
           </div>{" "}
         </form>{" "}
       </div>{" "}
+      <ToastContainer />
     </div>
   );
 }

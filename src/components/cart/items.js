@@ -8,11 +8,9 @@ import { Usercontext } from "../../aaaaa";
 
 function Items(props) {
   const usercontexts = useContext(Usercontext);
-  // console.log("props", props.arr);
   const { _id, Rs, cart, imgs, items, itemid, kg, name, review } = props.arr;
   const star = review;
   var a = star;
-  // var n = 5;
   const reviews = [];
   for (let i = 0; i < 5; i++) {
     if (i < a) {
@@ -23,9 +21,7 @@ function Items(props) {
     reviews.push(ins);
   }
   const ale = async () => {
-    alert("hii");
     var app = await axios.get(`http://localhost:2000/Peritems/${itemid}`);
-
     var kgg = app.data.kg;
     let data = {
       data: {
@@ -34,9 +30,7 @@ function Items(props) {
     };
 
     var cha = kgg + cart;
-    // console.log(kg);
-    // console.log(cart);
-    // console.log(data);
+
     let update = {
       _id: itemid,
       kg: cha,
